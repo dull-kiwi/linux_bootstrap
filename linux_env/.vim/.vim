@@ -1,0 +1,1 @@
+/home/dklimavi/src/linux_bootstrap/linux_env/.vim

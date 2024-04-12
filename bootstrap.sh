@@ -28,13 +28,13 @@ installPackages() {
             gcc \
             g++ \
             make
-    elif [[ $OS == "ubuntu" ]]; then
-        sudo apt update && sudo apt upgrade -y
+    else
+        sudo apt update
         sudo apt install -y \
             vim \
             python3 \
             python3-pip \
-            python3-devel \ 
+            python3-dev \
             git-gui \
             openssh-server \
             htop \
@@ -42,31 +42,36 @@ installPackages() {
             net-tools \
             tmux \
             make \
-            cmake \ 
-            cmake3 \
-            build-essentials
+            cmake \
+            build-essential
     fi
 }
 
 configureVim() {
-    rm -rf ~/.vim ~/.vimrc
+    if test -f ~/.tmux.conf; then
+        rm -rf ~/.vim ~/.vimrc
+    fi
+
     ln -s $SCRIPT_DIR/linux_env/.vim ~/.vim
     ln -s $SCRIPT_DIR/linux_env/.vimrc ~/.vimrc
     cd $SCRIPT_DIR/linux_env/.vim/bundle/YouCompleteMe
-    python3 install.py --clangd-completer
+    python3 install.py --clang-completer
 }
 
 configureTmux() {
-    rm ~/.tmux.conf
+    if test -f ~/.tmux.conf; then
+        rm ~/.tmux.conf
+    fi
+
     ln -s $SCRIPT_DIR/linux_env/.tmux.conf ~/.tmux.conf
 }
 
 if [[ $FLAG == "vim" ]]; then
     configureVim
 elif [[ $FLAG == "tmux" ]]; then
-    conifgureTmux
+    configureTmux
 elif [[ $FLAG == "all" ]]; then
     installPackages
     configureVim
-    configureTmux 
+    configureTmux
 fi

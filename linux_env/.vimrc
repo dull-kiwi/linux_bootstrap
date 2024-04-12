@@ -56,8 +56,27 @@ packloadall
 
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'ludovicchabant/vim-gutentags'
-
+Plugin 'preservim/nerdtree'
 
 " TMUX color theme passthrough
 set background=dark
 set t_Co=256
+
+
+function! <SID>StripTrailingWhitespaces()
+        let l = line(".")
+            let c = col(".")
+                %s/\s\+$//e
+                    call cursor(l, c)
+endfun
+
+" strip tailing whitespace on all files edited with vim.
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" NERDTree conifg
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
