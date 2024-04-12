@@ -27,7 +27,9 @@ installPackages() {
             cmake \
             gcc \
             g++ \
-            make
+            make \
+            universal-ctags \
+            keepassxc
     else
         sudo apt update
         sudo apt install -y \
@@ -43,7 +45,9 @@ installPackages() {
             tmux \
             make \
             cmake \
-            build-essential
+            build-essential \
+            universal-ctags \
+            keepassxc
     fi
 }
 
@@ -66,6 +70,10 @@ configureTmux() {
     ln -s $SCRIPT_DIR/linux_env/.tmux.conf ~/.tmux.conf
 }
 
+configureFstab(){
+ # TODO
+}
+
 if [[ $FLAG == "vim" ]]; then
     configureVim
 elif [[ $FLAG == "tmux" ]]; then
@@ -75,3 +83,4 @@ elif [[ $FLAG == "all" ]]; then
     configureVim
     configureTmux
 fi
+

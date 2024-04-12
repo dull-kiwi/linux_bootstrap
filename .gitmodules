@@ -1,6 +1,6 @@
 [submodule "linux_env/.vim/bundle/Vundle.vim"]
 	path = linux_env/.vim/bundle/Vundle.vim
-	url = git@github.com:VundleVim/Vundle.vim.git
+	url = https://github.com/VundleVim/Vundle.vim.git
 [submodule "linux_env/.vim/bundle/vim-gutentags"]
 	path = linux_env/.vim/bundle/vim-gutentags
 	url = git@github.com:ludovicchabant/vim-gutentags.git
@@ -10,3 +10,4 @@
 [submodule "linux_env/.vim/bundle/nerdtree"]
 	path = linux_env/.vim/bundle/nerdtree
 	url = git@github.com:preservim/nerdtree.git
+
