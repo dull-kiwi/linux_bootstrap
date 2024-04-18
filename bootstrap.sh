@@ -31,7 +31,8 @@ installPackages() {
             universal-ctags \
             keepassxc \
             nvtop \
-            picom
+            picom \
+            xfce4-terminal
     elif test -f /usr/bin/apt; then
         sudo apt update
         sudo apt install -y \
@@ -51,7 +52,8 @@ installPackages() {
             universal-ctags \
             keepassxc \
             nvtop \
-            picom
+            picom \
+            xfce4-terminal
     fi
 }
 
