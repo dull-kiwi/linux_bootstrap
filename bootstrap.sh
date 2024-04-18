@@ -11,7 +11,7 @@ fi
 git submodule update --init --recursive
 
 installPackages() {
-    if [[ $OS == "fedora" ]]; then
+    if test -f /usr/bin/dnf; then
         sudo dnf upgrade --refresh
         sudo dnf install -y \
             vim \
@@ -29,8 +29,10 @@ installPackages() {
             g++ \
             make \
             universal-ctags \
-            keepassxc
-    else
+            keepassxc \
+            nvtop \
+            picom
+    elif test -f /usr/bin/apt; then
         sudo apt update
         sudo apt install -y \
             vim \
@@ -47,7 +49,9 @@ installPackages() {
             cmake \
             build-essential \
             universal-ctags \
-            keepassxc
+            keepassxc \
+            nvtop \
+            picom
     fi
 }
 
@@ -70,17 +74,29 @@ configureTmux() {
     ln -s $SCRIPT_DIR/linux_env/.tmux.conf ~/.tmux.conf
 }
 
-configureFstab(){
- # TODO
+configure_i3(){
+    if test -f ~/.config/i3/config; then
+        rm ~/.config/i3/config
+    fi
+
+    ln -s $SCRIPT_DIR/linux_env/i3/config ~/.config/i3/config
 }
+
+
+#configureFstab(){
+# # TODO
+#}
 
 if [[ $FLAG == "vim" ]]; then
     configureVim
 elif [[ $FLAG == "tmux" ]]; then
     configureTmux
+elif [[ $FLAG == "i3" ]]; then
+    configure_i3
 elif [[ $FLAG == "all" ]]; then
     installPackages
     configureVim
     configureTmux
+    configure_i3
 fi
 
