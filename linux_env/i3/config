@@ -194,6 +194,7 @@ bar {
 }
 
 # AUTOSTARTS
+exec --no-startup-id xrandr --output DP-2 --mode 5120x1440
 exec_always picom
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id "KeePassXC"
