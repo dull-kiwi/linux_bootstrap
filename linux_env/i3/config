@@ -13,8 +13,8 @@ set $mod Mod1
 
 
 # Actions
-bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 10"
-bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 10"
+bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 5"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 5"
 
 
 # Font for window titles. Will also be used by the bar unless a different font
