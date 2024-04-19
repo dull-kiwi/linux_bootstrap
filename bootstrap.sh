@@ -31,7 +31,8 @@ installPackages() {
             universal-ctags \
             keepassxc \
             nvtop \
-            picom
+            picom \
+            xfce4-terminal
     elif test -f /usr/bin/apt; then
         sudo apt update
         sudo apt install -y \
@@ -51,7 +52,8 @@ installPackages() {
             universal-ctags \
             keepassxc \
             nvtop \
-            picom
+            picom \
+            xfce4-terminal
     fi
 }
 
@@ -82,6 +84,13 @@ configure_i3(){
     ln -s $SCRIPT_DIR/linux_env/i3/config ~/.config/i3/config
 }
 
+configure_picom(){
+    if test -f ~/.config/picom.conf; then
+        rm ~/.config/picom.conf
+    fi
+
+    ln -s $SCRIPT_DIR/linux_env/picom.conf ~/.config/picom.conf
+}
 
 #configureFstab(){
 # # TODO
@@ -93,10 +102,13 @@ elif [[ $FLAG == "tmux" ]]; then
     configureTmux
 elif [[ $FLAG == "i3" ]]; then
     configure_i3
+elif [[ $FLAG == "picom" ]]; then
+    configure_picom
 elif [[ $FLAG == "all" ]]; then
     installPackages
     configureVim
     configureTmux
     configure_i3
+    configure_picom
 fi
 
