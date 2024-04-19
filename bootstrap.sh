@@ -106,6 +106,8 @@ elif [[ $FLAG == "packages" ]]; then
     installPackages
 elif [[ $FLAG == "picom" ]]; then
     configure_picom
+elif [[ $FLAG == "packages" ]]; then
+    installPackages
 elif [[ $FLAG == "all" ]]; then
     installPackages
     configureVim
