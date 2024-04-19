@@ -95,6 +95,8 @@ elif [[ $FLAG == "tmux" ]]; then
     configureTmux
 elif [[ $FLAG == "i3" ]]; then
     configure_i3
+elif [[ $FLAG == "packages" ]]; then
+    installPackages
 elif [[ $FLAG == "all" ]]; then
     installPackages
     configureVim
