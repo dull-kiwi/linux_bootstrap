@@ -104,6 +104,8 @@ elif [[ $FLAG == "i3" ]]; then
     configure_i3
 elif [[ $FLAG == "picom" ]]; then
     configure_picom
+elif [[ $FLAG == "packages" ]]; then
+    installPackages
 elif [[ $FLAG == "all" ]]; then
     installPackages
     configureVim
